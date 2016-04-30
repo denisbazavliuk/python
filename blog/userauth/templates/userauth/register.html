@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+{% block menu %}
+ <ul class="css-menu-3">
+<li><a href="{% url 'list' %}">Главная</a></li>
+<li><a href="{% url 'create' %}">Создать запись</a></li>
+<li><a href="{% url 'register_home' %}">Регистрация</a></li>
+<li><a href="{% url 'email' %}">Отправить жалобу или предложение</a></li>
+</ul>
+{% endblock menu%}
+
+
+{% block article_content %}
+<div class = 'col-sm-6 col-sm-offset-3'>
+{% block login %}
+<form action = "{% url 'register' %}" method="post">
+{% csrf_token%}
+{{ form.as_p }}
+
+<input type='submit' class='btn btn-default' value = 'Зарегистрироваться'>
+</form>
+{% endblock login %}
+</div>
+{% endblock article_content %}
